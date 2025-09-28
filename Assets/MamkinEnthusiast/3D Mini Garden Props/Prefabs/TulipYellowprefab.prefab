@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages: 3
   countsToNextStage: 7
-  growSource: {fileID: 0}
+  growSource: {fileID: 7265249104843288076}
 --- !u!65 &1373720917498464694
 BoxCollider:
   m_ObjectHideFlags: 0
