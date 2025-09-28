@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class WateringCan : MonoBehaviour
