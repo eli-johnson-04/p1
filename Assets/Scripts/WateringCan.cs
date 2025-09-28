@@ -1,14 +1,10 @@
+using System.Collections.Generic;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class WateringCan : MonoBehaviour
 {
     public ParticleSystem water;
-    public Transform growCastOrigin;
-    
-    [Header("Growth Casting")]
-    public float castDistance = 5f;
-    public float coneAngle = 30f;
-    public int rayCount = 8;
     
     void Update()
     {
@@ -16,25 +12,8 @@ public class WateringCan : MonoBehaviour
         if (upsideDown)
         {
             if (!water.isPlaying) water.Play();
-            PerformGrowthCast();
+            // Debug.Log("hello vro im da watercan i am ready to water");
         }
         else water.Stop();
-    }
-    
-    void PerformGrowthCast()
-    {
-        Vector3 forward = -growCastOrigin.up; // Down direction when upside down
-        
-        for (int i = 0; i < rayCount; i++)
-        {
-            float angle = (360f / rayCount) * i;
-            Vector3 direction = Quaternion.AngleAxis(angle, forward) * 
-                               Quaternion.AngleAxis(coneAngle, growCastOrigin.right) * forward;
-            
-            if (Physics.Raycast(growCastOrigin.position, direction, out RaycastHit hit, castDistance))
-            {
-                hit.collider.gameObject.SendMessage("Grow", SendMessageOptions.DontRequireReceiver);
-            }
-        }
     }
 }
