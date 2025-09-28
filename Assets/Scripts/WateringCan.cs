@@ -3,6 +3,7 @@ using UnityEngine;
 public class WateringCan : MonoBehaviour
 {
     public ParticleSystem water;
+    public AudioSource wateringSound;
     
     void Update()
     {
@@ -10,8 +11,13 @@ public class WateringCan : MonoBehaviour
         if (upsideDown)
         {
             if (!water.isPlaying) water.Play();
+            if (!wateringSound.isPlaying) wateringSound.Play();
             // Debug.Log("hello vro im da watercan i am ready to water");
         }
-        else water.Stop();
+        else
+        {
+            water.Stop();
+            wateringSound.Pause();
+        }
     }
 }

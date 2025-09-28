@@ -9,6 +9,8 @@ public class GrowableFlower : MonoBehaviour
     private int currentCounts = 0;
     private Vector3 diff;
 
+    public AudioSource growSource;
+
     void OnParticleCollision(GameObject other)
     {
         Debug.Log("particle collided bay bee");
@@ -23,6 +25,7 @@ public class GrowableFlower : MonoBehaviour
         {
             transform.localScale += diff;
             currentStage++;
+            growSource.Play();
             currentCounts = 0;
         }
     }
